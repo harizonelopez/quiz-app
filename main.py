@@ -32,6 +32,20 @@ class Question:
 questions = [
     Question("What is the capital of France?", ["London", "Paris", "Berlin"], 1),
     Question("Which programming language is this quiz written in?", ["Java", "Python", "C++"], 1),
+    Question("What is the capital of Japan?", ["Beijing", "Seoul", "Tokyo"], 2),
+    Question("Which planet is known as the Red Planet?", ["Venus", "Mars", "Jupiter"], 1),
+    Question("Who wrote 'Romeo and Juliet'?", ["Charles Dickens", "William Shakespeare", "Jane Austen"], 1),
+    Question("What is the largest mammal on Earth?", ["Elephant", "Blue Whale", "Giraffe"], 2),
+    Question("In which year did the Titanic sink?", ["1912", "1920", "1935"], 1),
+    Question("What is the powerhouse of the cell?", ["Nucleus", "Mitochondria", "Endoplasmic Reticulum"], 1),
+    Question("Which programming language is often used for machine learning?", ["Java", "Python", "C#"], 2),
+    Question("What is the capital of Kenya?", ["Kisumu", "Eldoret", "Nairobi"], 2),
+
+]
+
+# Initialize Quiz
+quiz = Quiz(questions)
+
 ]
 
 class Quiz:
