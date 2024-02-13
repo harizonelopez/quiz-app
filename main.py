@@ -24,7 +24,6 @@ def create_table():
         )
     ''')
     conn.commit()
-    #conn.close()
 
 class Question:
     def __init__(self, prompt, options, correct_answer):
