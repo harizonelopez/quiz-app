@@ -39,8 +39,9 @@ questions = [
     Question("In which year did the Titanic sink?", ["1912", "1920", "1935"], 1),
     Question("What is the powerhouse of the cell?", ["Nucleus", "Mitochondria", "Endoplasmic Reticulum"], 1),
     Question("Which programming language is often used for machine learning?", ["Java", "Python", "C#"], 2),
-    Question("What is the capital of Kenya?", ["Kisumu", "Eldoret", "Nairobi"], 2),
-
+    Question("What is the capital city of Kenya?", ["Kisumu", "Eldoret", "Nairobi"], 2),
+    Question("What is NOT an AI tech of Tony Stark ?", ["J.A.R.V.I.S", "E.D.I.T.H", "F.R.I.D.A.Y", "U.L.T.R.O.N", "Miss Minutes"], 1),
+    
 ]
 
 # Initialize Quiz
