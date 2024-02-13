@@ -73,9 +73,8 @@
 
 <body>
     <section>
-
+        <h2 align="center">Quiz page</h2>
         <section>
-            <h2>Quiz</h2>
             {% with messages = get_flashed_messages() %}
                 {% if messages %}
                     <ul>
@@ -88,10 +87,11 @@
             {% if not quiz.is_finished() %}
                 <form method="post" action="{{ url_for('quiz') }}">
                     <p>{{ quiz.get_current_question().prompt }}</p>
-                    {% for i, option in enumerate(quiz.get_current_question().options, 1) %}
-                        <input type="radio" 
+                    {% for i in range(1, quiz.get_current_question().options|length + 1) %}
+                        <input  
+                            type="radio" 
                             name="answer" 
-                            value="{{ i }}" required> {{ option }}<br>
+                            value="{{ i }}" required> {{ quiz.get_current_question().options[i-1] }}<br>
                     {% endfor %}
                     <br>
                     <input type="submit" value="Next">
