@@ -1,9 +1,12 @@
-
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_session import Session
+
 app = Flask(__name__)
 app.secret_key = 'aladinh-montext'  
+app.config['SESSION_TYPE'] = 'filesystem'
+Session(app)
 
 DATABASE = 'users.db'
 
@@ -21,7 +24,7 @@ def create_table():
         )
     ''')
     conn.commit()
-    conn.close()
+    #conn.close()
 
 class Question:
     def __init__(self, prompt, options, correct_answer):
@@ -30,24 +33,23 @@ class Question:
         self.correct_answer = correct_answer
 
 questions = [
-    Question("What is the capital of France?", ["London", "Paris", "Berlin"], 1),
-    Question("Which programming language is this quiz written in?", ["Java", "Python", "C++"], 1),
-    Question("What is the capital of Japan?", ["Beijing", "Seoul", "Tokyo"], 2),
-    Question("Which planet is known as the Red Planet?", ["Venus", "Mars", "Jupiter"], 1),
-    Question("Who wrote 'Romeo and Juliet'?", ["Charles Dickens", "William Shakespeare", "Jane Austen"], 1),
-    Question("What is the largest mammal on Earth?", ["Elephant", "Blue Whale", "Giraffe"], 2),
-    Question("In which year did the Titanic sink?", ["1912", "1920", "1935"], 1),
-    Question("What is the powerhouse of the cell?", ["Nucleus", "Mitochondria", "Endoplasmic Reticulum"], 1),
-    Question("Which programming language is often used for machine learning?", ["Java", "Python", "C#"], 2),
-    Question("What is the capital city of Kenya?", ["Kisumu", "Eldoret", "Nairobi"], 2),
-    Question("What is NOT an AI tech of Tony Stark ?", ["J.A.R.V.I.S", "E.D.I.T.H", "F.R.I.D.A.Y", "U.L.T.R.O.N", "Miss Minutes"], 1),
-    
-]
-
-# Initialize Quiz
-quiz = Quiz(questions)
-
-]
+    Question("1. What is the capital of France?", ["Manchester", "London", "Paris", "Berlin"], 2),
+    Question("2. Which programming language is this quiz written in?", ["Java", "Python", "GO", "C++"], 2),
+    Question("3. What is the capital of Japan?", ["Beijing", "Seoul", "Tokyo", "Abuja"], 3),
+    Question("4. Which planet is known as the Red Planet?", ["Venus", "Mars", "Jupiter", "Saturn"], 1),
+    Question("5. Who wrote 'Romeo and Juliet'?", ["Charles Dickens", "William Shakespeare", "Charles Darwin", "Jane Austen"], 2),
+    Question("6. What is the largest mammal on Earth?", ["Elephant", "Blue Whale", "Giraffe", "Dinosar"], 2),
+    Question("7. In which year did the Titanic sink?", ["1912", "1918", "1920", "1935"], 1),
+    Question("8. What is the powerhouse of the cell?", ["Nucleus", "Nucleolus", "Mitochondria", "Endoplasmic Reticulum"], 1),
+    Question("9. Which programming language is often used for machine learning?", ["Java", "Python", "JavaScript", "C#"], 2),
+    Question("10. What is the capital city of Kenya?", ["Kisumu", "Nakuru", "Nairobi", "Murang'a"], 3),
+    Question("11. What is NOT an AI tech of Tony Stark?", ["J.A.R.V.I.S", "E.D.I.T.H", "F.R.I.D.A.Y", "Miss Minutes"], 4),
+    Question("12. What is not a programming language used used for game development?", ["C++", "RUBY", "JAVA", "PHP"], 4),
+    Question("13. Which of these is not a programming language?", ["C", "RAILS", "CSS", "Kotlin"], 3),
+    Question("14. Which of these is used for android app development?", ["Kotlin", "HTML", "RUBY", "PHP"], 1),
+    Question("15. What is an IDE?", ["Independent Dean of Environment", "Integrated Development Environment", "Internal Depart Engine", "Integer Data Entry"], 2),
+    Question("16. Which of the following is not an IDE?", ["Docker", "Visual Studio Code", "Sublime", "Atom"], 1),
+    ]
 
 class Quiz:
     def __init__(self, questions):
@@ -74,19 +76,26 @@ def quiz():
     if 'username' not in session:
         flash('Please login to take the quiz.')
         return redirect(url_for('login'))
+    
+    if 'quiz' not in session:
+        session['quiz'] = Quiz(questions)
+        
+    quiz = session['quiz']
 
     if request.method == 'POST':
         user_answer = int(request.form['answer'])
-
+        quiz.submit_answer(user_answer)
+        
         if user_answer == quiz.get_current_question().correct_answer:
             flash('Congrats, Correct answer!')
         else:
-            flash('Oops, Incorrect answer! Try again')
-
-            quiz.next_question()
+            flash('Oops! Incorrect answer. Try again')
+            
+        quiz.next_question()
 
         if quiz.is_finished():
             flash(f'Quiz completed! You scored {quiz.score}/{len(quiz.questions)}.')
+            session.pop('quiz')
             return redirect(url_for('home'))
 
     return render_template('quiz.html', quiz=quiz)
@@ -101,22 +110,20 @@ def signup():
         username = request.form['username']
         password = request.form['password']
 
-        conn = connect_db()
-        c = conn.cursor()
+        with connect_db() as conn:
+            c = conn.cursor()
 
-        c.execute('SELECT * FROM users WHERE username = ?', (username,))
-        existing_user = c.fetchone()
+            c.execute('SELECT * FROM users WHERE username = ?', (username,))
+            existing_user = c.fetchone()
 
-        if existing_user:
-            flash('Username already taken. Please choose another.')
-        else:
-            hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
-            c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
-            conn.commit()
-            flash('Account created successfully. Please login.')
-            return redirect(url_for('login'))
-
-        conn.close()
+            if existing_user:
+                flash('Username already taken. Please choose another.')
+            else:
+                hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
+                c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
+                conn.commit()
+                flash('Account created successfully. Please login.')
+                return redirect(url_for('login'))
 
     return render_template('signup.html')
 
