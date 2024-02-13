@@ -2,7 +2,6 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
-
 app = Flask(__name__)
 app.secret_key = 'aladinh-montext'  
 
@@ -63,8 +62,13 @@ def quiz():
 
     if request.method == 'POST':
         user_answer = int(request.form['answer'])
-        quiz.submit_answer(user_answer)
-        quiz.next_question()
+
+        if user_answer == quiz.get_current_question().correct_answer:
+            flash('Congrats, Correct answer!')
+        else:
+            flash('Oops, Incorrect answer! Try again')
+
+            quiz.next_question()
 
         if quiz.is_finished():
             flash(f'Quiz completed! You scored {quiz.score}/{len(quiz.questions)}.')
