@@ -88,22 +88,22 @@
         {% endwith %}
         
         {% if 'username' in session %}
-            <h3>Hello, {{ session['username'] }}, Welcome to the quiz app.</h3>
-            <h3>Proceed to take the quiz.</h3>
+            <h5 align="center">Hello {{ session['username'] }}, Welcome to the quiz app.</h5>
+            <h5 align="ceneter">Proceed to take the quiz.</h5>
             <section>
                 <h3 align="center"><a href="{{ url_for('quiz') }}">Take Quiz || </a> <a href="{{ url_for('logout') }}">|| Logout</a></h3>
             </section>
         {% else %}
-            <section>
-                <h3>You need to signup if you dont have an account or you can just login to your account.</h3>
+            <section align="center">
+                <h5>You need to signup if you dont have an account or you can just login to your account.</h5>
             </section>
             <section>
-                <h1 align="center"><a href="{{ url_for('signup') }}">Sign Up</a> or <a href="{{ url_for('login') }}">Login</a></h1>
+                <h1 align="center"> <a href="{{ url_for('signup') }}">Sign Up</a> or <a href="{{ url_for('login') }}"> Login </a> </h1>
             </section>
         {% endif %}
 
-        <section>
-            <h5>In case you need to reach me for help or any other inquiry, <a href="{{ url_for('contact') }}"> contact me.</a> </h5>
+        <section align="center">
+            <h5> In case you need to reach me for help or any other inquiry, <a href="{{ url_for('contact') }}"> contact me.</a> </h5>
         </section>
 
         <footer>
