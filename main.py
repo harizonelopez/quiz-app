@@ -156,6 +156,13 @@ def contact():
     
     return render_template('contacts.html')
 
+@app.route('/reference', methods=['GET', 'POST'])
+def reference():
+    if request.method == 'POST':
+        return redirect(url_for('home'))
+    
+    return render_template('reference.html')
+
 @app.route('/logout')
 def logout():
     session.pop('username', None)
@@ -164,3 +171,4 @@ def logout():
 if __name__ == '__main__':
     create_table()
     app.run(debug=True)
+
