@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 import sqlite3
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_session import Session
+import math
 
 app = Flask(__name__)
 app.secret_key = 'aladinh-montext'  
@@ -86,14 +87,29 @@ def quiz():
         quiz.submit_answer(user_answer)
         
         if user_answer == quiz.get_current_question().correct_answer:
-            flash('Congrats, Correct answer!')
+            flash('Congrats, Correct answer ^.^')
         else:
-            flash('Oops! Incorrect answer. Try again')
+            flash('Oops!! Incorrect answer, Revise well.')
             
         quiz.next_question()
 
         if quiz.is_finished():
-            flash(f'Quiz completed! You scored {quiz.score}/{len(quiz.questions)}.')
+            flash(f'Quiz completed, You scored {quiz.score}/{len(quiz.questions)} questions correct.')
+            percent = float(quiz.score/len(quiz.questions))*100
+            percentage = math.ceil(percent)
+            comment1 = "Above Average, strive for the best."
+            comment2 = "Below Average, Revise well."
+            comment3 = "Hurray!! You are genious, keep it up pall."
+            
+            if percentage == 100:
+                flash(f'You have {percentage}%, {comment3}')
+                
+            elif percentage >= 50:
+                flash(f'You have {percentage}%, {comment1}')
+                
+            elif percentage < 50:
+                flash(f'You have {percentage}%, {comment2}')
+            
             session.pop('quiz')
             return redirect(url_for('home'))
 
