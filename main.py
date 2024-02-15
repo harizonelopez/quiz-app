@@ -99,7 +99,7 @@ def quiz():
             percentage = math.ceil(percent)
             comment1 = "Above Average, strive for the best."
             comment2 = "Below Average, Revise well."
-            comment3 = "Hurray!! You are genious, keep it up pall."
+            comment3 = "Hurray!! You are a genious, keep it up pall."
             
             if percentage == 100:
                 flash(f'You have {percentage}%, {comment3}')
