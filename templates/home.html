@@ -77,16 +77,6 @@
         <section>
             <h2 align="center">Welcome to the quiz app</h2>
         </section>
-        {% with messages = get_flashed_messages() %}
-            {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        {% endwith %}
-        
         {% if 'username' in session %}
             <h5 align="center">Hello {{ session['username'] }}, Welcome to the quiz app.</h5>
             <h5 align="center">Proceed to take the quiz.</h5>
