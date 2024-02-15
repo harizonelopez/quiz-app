@@ -75,26 +75,20 @@
     <section>
         <h2 align="center">Quiz page</h2>
         <section>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
             {% if not quiz.is_finished() %}
                 <form method="post" action="{{ url_for('quiz') }}">
-                    <p>{{ quiz.get_current_question().prompt }}</p>
-                    {% for i in range(1, quiz.get_current_question().options|length + 1) %}
-                        <input  
-                            type="radio" 
-                            name="answer" 
-                            value="{{ i }}" required> {{ quiz.get_current_question().options[i-1] }}<br>
-                    {% endfor %}
-                    <br>
-                    <input type="submit" value="Next">
+                    <section>
+                        <p>{{ quiz.get_current_question().prompt }}</p>
+                        {% for i in range(1, quiz.get_current_question().options|length + 1) %}
+                            <input  
+                                type="radio" 
+                                name="answer" 
+                                value="{{ i }}" required> {{ quiz.get_current_question().options[i-1] }}
+                                <br>
+                        {% endfor %}
+                        <br>
+                        <input type="submit" class="btn btn-primary" value="Next">
+                    </section>
                 </form>
             {% else %}
                 <p>Quiz completed! You scored {{ quiz.score }}/{{ len(quiz.questions) }}.</p>
