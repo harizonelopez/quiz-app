@@ -50,9 +50,14 @@ questions = [
     Question("15. What is an IDE?", ["Independent Dean of Environment", "Integrated Development Environment", "Internal Depart Engine", "Integer Data Entry"], 2),
     Question("16. Which of the following is not an IDE?", ["Docker", "Visual Studio Code", "Sublime", "Atom"], 1),
     Question("17. What is R.A.M in full?", ["Random Apparent Module", "Random Access Memory", "Read-Absorb-Mandate", "Random Access Modulle"], 2),
-    Question("18. What is the measure of a computer's speed?", ["Mbps", "Ghz", "Gbps", "bps"], 2),
+    Question("18. What is the measure of a computer's processor speed?", ["Mbps", "Ghz", "Gbps", "bps"], 2),
     Question("19. Which of these is not a search engine?", ["Bing", "Chrome", "Duckduck", "Linux"], 4),
-    Question("20. Which of these is not a module in python?", ["Node.js", "Math", "Tkinter", "Random"], 1),
+    Question("20. Which of these is not a module in python?", ["Node.js", "Math", "Tkinter", "Random"], 1),  
+    Question("21. What is CPU in full?", ["Command Processor User-interface", "Central Processor Unit", "Central Processing Unit", "Central Processing Unicode"], 3),
+    Question("22. Which of these is not a Python framework?", ["Angular", "Django", "Flask", "FastApi"], 1),
+    Question("23. Which of these is not a tech company ?", ["Google", "WHO", "Amazon", "Microsoft"], 2),
+    Question("24. Which of these is not a server?", ["DHCP", "Email server", "Database server", "Client server"], 4),
+    Question("25. Whom of these is not a tech-company CEO?", ["Elon Musk", "Bill Gates", "Jack Maa", "Mark Zurkerbag"], 3),
     ]
 
 class Quiz:
@@ -98,24 +103,12 @@ def quiz():
         quiz.next_question()
 
         if quiz.is_finished():
-            flash(f'Quiz completed, You scored {quiz.score}/{len(quiz.questions)} questions correct.')
-            percent = float(quiz.score/len(quiz.questions))*100
-            percentage = math.ceil(percent)
-            comment1 = "Above Average, strive for the best."
-            comment2 = "Below Average, Revise well."
-            comment3 = "Hurray!! You are a genious, keep it up pall."
-            
-            if percentage == 100:
-                flash(f'You have {percentage}%, {comment3}')
-                
-            elif percentage >= 50:
-                flash(f'You have {percentage}%, {comment1}')
-                
-            elif percentage < 50:
-                flash(f'You have {percentage}%, {comment2}')
+            #flash(f'Quiz completed, You scored {quiz.score}/{len(quiz.questions)} questions correct.')
+            percent_score = float(quiz.score/len(quiz.questions))*100
+            percentage = math.ceil(percent_score) 
             
             session.pop('quiz')
-            return redirect(url_for('home'))
+            return redirect(url_for('score',  percentage=percentage))
 
     return render_template('quiz.html', quiz=quiz)
 
@@ -136,12 +129,13 @@ def signup():
             existing_user = c.fetchone()
 
             if existing_user:
-                flash('Username already taken. Please choose another.')
+                flash('Username details already taken. Please enter another details.')
             else:
                 hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
                 c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
                 conn.commit()
-                flash('Account created successfully. Please login.')
+                flash('Account created successfully. Login now.')
+                
                 return redirect(url_for('login'))
 
     return render_template('signup.html')
@@ -187,6 +181,20 @@ def reference():
 def logout():
     session.pop('username', None)
     return redirect(url_for('home'))
+
+@app.route('/score', methods=['GET', 'POST'])
+def score():
+    comment1 = "Congratulations! You are a genious pall."
+    comment2 = "Above Average, strive for the best."
+    comment3 = "Below Average, Revise well."
+    
+    score = request.args.get('percentage')
+    percentage = int(score)
+        
+    if request.method == "POST":
+        return redirect(url_for('home'))
+    
+    return render_template('score.html', percentage=percentage, comment1=comment1, comment2=comment2, comment3=comment3)
 
 if __name__ == '__main__':
     create_table()
