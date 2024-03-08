@@ -49,7 +49,7 @@ questions = [
     Question("14. Which of these is used for android app development?", ["Kotlin", "HTML", "RUBY", "PHP"], 1),
     Question("15. What is an IDE?", ["Independent Dean of Environment", "Integrated Development Environment", "Internal Depart Engine", "Integer Data Entry"], 2),
     Question("16. Which of the following is not an IDE?", ["Docker", "Visual Studio Code", "Sublime", "Atom"], 1),
-    Question("17. What is R.A.M in full?" ["Random Apparent Module", "Random Access Memory", "Read-Absorb-Mandate", "Random Access Modulle"], 2),
+    Question("17. What is R.A.M in full?", ["Random Apparent Module", "Random Access Memory", "Read-Absorb-Mandate", "Random Access Modulle"], 2),
     Question("18. What is the measure of a computer's speed?", ["Mbps", "Ghz", "Gbps", "bps"], 2),
     Question("19. Which of these is not a search engine?", ["Bing", "Chrome", "Duckduck", "Linux"], 4),
     Question("20. Which of these is not a module in python?", ["Node.js", "Math", "Tkinter", "Random"], 1),
