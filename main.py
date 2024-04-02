@@ -5,7 +5,7 @@ from flask_session import Session
 import math
 
 app = Flask(__name__)
-app.secret_key = 'aladinh-montext'  
+app.secret_key = 'aladinh01-00montext'  
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
@@ -98,12 +98,11 @@ def quiz():
         if user_answer == quiz.get_current_question().correct_answer:
             flash('Congrats, Correct answer ^.^')
         else:
-            flash('Oops!! Incorrect answer, Revise well.')
+            flash('Oops!! Incorrect answer, Revise well and properly.')
             
         quiz.next_question()
 
         if quiz.is_finished():
-            #flash(f'Quiz completed, You scored {quiz.score}/{len(quiz.questions)} questions correct.')
             percent_score = float(quiz.score/len(quiz.questions))*100
             percentage = math.ceil(percent_score) 
             
