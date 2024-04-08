@@ -34,7 +34,7 @@ class Question:
 
 questions = [
     Question("1. What is the capital of France?", ["Manchester", "London", "Paris", "Berlin"], 2),
-    Question("2. Which programming language is this quiz written in?", ["Java", "Python", "GO", "C++"], 2),
+    Question("2. Which programming language is this quiz written in?", ["Java", "Python", "Php", "C++"], 2),
     Question("3. What is the capital of Japan?", ["Beijing", "Seoul", "Tokyo", "Abuja"], 3),
     Question("4. Which planet is known as the Red Planet?", ["Venus", "Mars", "Jupiter", "Saturn"], 1),
     Question("5. Who wrote 'Romeo and Juliet'?", ["Charles Dickens", "William Shakespeare", "Charles Darwin", "Jane Austen"], 2),
