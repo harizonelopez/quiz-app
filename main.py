@@ -57,7 +57,7 @@ questions = [
     Question("22. Which of these is not a Python framework?", ["Angular", "Django", "Flask", "FastApi"], 1),
     Question("23. Which of these is not a tech company ?", ["Google", "WHO", "Amazon", "Microsoft"], 2),
     Question("24. Which of these is not a server?", ["DHCP", "Email server", "Database server", "Client server"], 4),
-    Question("25. Whom of these is not a tech-company CEO?", ["Elon Musk", "Bill Gates", "Jack Maa", "Mark Zurkerbag"], 3)
+    Question("25. Whom of these is not a tech-company CEO?", ["Elon Musk", "Bill Gates", "Jack Maa", "Mark Zuckerberg"], 3)
     ]
 
 class Quiz:
