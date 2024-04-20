@@ -7,7 +7,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Score-page</title>
     <style>
         body {
             display: flex;
@@ -79,10 +78,11 @@
 <body>
     <section>
         <header align="center">
-            <p>The Score Page. <br>This is how you have perfomed in your quiz assessment.</p>
+            <p>The Score Page</p>
         </header>
 
         <section>
+            <h1>This is how you have perfomed in your quiz assessment.</h1>
             {% if percentage is defined %}
                 {% if percentage == 100 %}
                 <section>
