@@ -5,17 +5,17 @@ from flask_session import Session
 import math
 
 app = Flask(__name__)
-app.secret_key = 'aladinh01-00montext'  
+app.config['SECRET_KEY'] = 'aladinh00-010montext'  
 app.config['SESSION_TYPE'] = 'filesystem'
 Session(app)
 
-DATABASE = 'users.db'
+NEW_DATABASE = 'users_new.db'
 
 def connect_db():
-    return sqlite3.connect(DATABASE)
+    return sqlite3.connect(NEW_DATABASE)
 
 def create_table():
-    conn = sqlite3.connect(DATABASE)
+    conn = connect_db()
     c = conn.cursor()
     c.execute('''
         CREATE TABLE IF NOT EXISTS users (
@@ -25,6 +25,7 @@ def create_table():
         )
     ''')
     conn.commit()
+    conn.close()
 
 class Question:
     def __init__(self, prompt, options, correct_answer):
