@@ -196,7 +196,7 @@ def score():
     
     return render_template('score.html', percentage=percentage, comment1=comment1, comment2=comment2, comment3=comment3)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     create_table()
     app.run(debug=True)
 
