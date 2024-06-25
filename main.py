@@ -35,7 +35,7 @@ class Question:
 
 questions = [
     Question("1. What is the capital of France?", ["Manchester", "London", "Paris", "Berlin"], 2),
-    Question("2. Which programming language is this quiz written in?", ["Java", "Python", "Php", "C++"], 2),
+    Question("2. Which programming language is this quiz written in?", ["Java", "Python", "GO", "C++"], 2),
     Question("3. What is the capital of Japan?", ["Beijing", "Seoul", "Tokyo", "Abuja"], 3),
     Question("4. Which planet is known as the Red Planet?", ["Venus", "Mars", "Jupiter", "Saturn"], 1),
     Question("5. Who wrote 'Romeo and Juliet'?", ["Charles Dickens", "William Shakespeare", "Charles Darwin", "Jane Austen"], 2),
@@ -58,7 +58,7 @@ questions = [
     Question("22. Which of these is not a Python framework?", ["Angular", "Django", "Flask", "FastApi"], 1),
     Question("23. Which of these is not a tech company ?", ["Google", "WHO", "Amazon", "Microsoft"], 2),
     Question("24. Which of these is not a server?", ["DHCP", "Email server", "Database server", "Client server"], 4),
-    Question("25. Whom of these is not a tech-company CEO?", ["Elon Musk", "Bill Gates", "Jack Maa", "Mark Zuckerberg"], 3)
+    Question("25. Whom of these is not a tech-company CEO?", ["Elon Musk", "Bill Gates", "Jack Maa", "Mark Zuckerberg"], 3),
     ]
 
 class Quiz:
@@ -84,7 +84,7 @@ class Quiz:
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if 'username' not in session:
-        flash('Please login to take the quiz.')
+        flash('Please login to your account to take the quiz.')
         return redirect(url_for('login'))
     
     if 'quiz' not in session:
@@ -99,7 +99,7 @@ def quiz():
         if user_answer == quiz.get_current_question().correct_answer:
             flash('Congrats, Correct answer ^.^')
         else:
-            flash('Oops!! Incorrect answer, Revise well and properly.')
+            flash('Oops!! Incorrect answer, Revise well.')
             
         quiz.next_question()
 
@@ -129,7 +129,7 @@ def signup():
             existing_user = c.fetchone()
 
             if existing_user:
-                flash('Username details already taken. Please enter another details.')
+                flash('The user details are already taken. Please enter different details.')
             else:
                 hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
                 c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
@@ -199,4 +199,3 @@ def score():
 if __name__ == "__main__":
     create_table()
     app.run(debug=True)
-
