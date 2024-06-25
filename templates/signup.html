@@ -26,20 +26,6 @@
             padding: 1em;
         }
 
-        h1, h2 {
-            color: #61dafb;
-        }
-
-        h3 {
-            line-height: 1.6;
-            color: #FF1493;
-        }
-
-        p, li, tr {
-            line-height: 1.6;
-            color: #a4acc4;
-        }
-
         section {
             max-width: 800px;
             margin: 20px auto;
@@ -51,11 +37,26 @@
 
         footer {
             background-color: #1e2229;
+            color: turquoise;
             text-align: center;
             padding: 0em 0;
             position: fixed;
             bottom: 0;
             width: 65%;
+        }
+
+        h2 {
+            color: #61dafb;
+        }
+
+        h3 {
+            line-height: 1.6;
+            color: #FF1493;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #a4acc4;
         }
 
         a {
@@ -66,25 +67,13 @@
         a:hover {
             border-bottom: 2px solid #FF6347;
         }
-
     </style>
 </head>
-
 <body>
     <section>
-
         <h2 align="center">Sign Up page</h2>
         <section>
             <h3>Enter the details:</h3>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    <ul>
-                        {% for message in messages %}
-                            <li>{{ message }}</li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            {% endwith %}
             <form method="POST" action="{{ url_for('signup') }}">
                 <div class="form-group">
                     <label for="username">User-name:</label>
@@ -93,7 +82,7 @@
                         class="form-control"
                         id="username" 
                         name="username" required
-                        placeholder="Enter username here..?">
+                        placeholder="Enter username here..">
                     <br>
                     <label for="password">Password:</label>
                     <input 
@@ -101,22 +90,20 @@
                         class="form-control"
                         id="password" 
                         name="password" required
-                        placeholder="Enter password here..?">
+                        placeholder="Enter password here..">
                 </div>
-
                 <button type="submit" class="btn btn-primary">Sign up</button>
             </form>
+
             <section>
                 <p>Already have an account? <a href="{{ url_for('login') }}">Login</a></p>
-            </section>
+            </section>    
         </section>
 
         <footer>
-            <p>&copy;2024 Dev_aladinh production.</p>
+            <p>&copy; 2024 Dev_aladinh production</p>
         </footer>
-
     </section>
 </body>
 </html>
-
 {% endblock %}
