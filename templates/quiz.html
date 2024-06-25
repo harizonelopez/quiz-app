@@ -7,7 +7,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
     <style>
         body {
             display: flex;
@@ -27,20 +26,6 @@
             padding: 1em;
         }
 
-        h1, h2 {
-            color: #61dafb;
-        }
-
-        h3, h5 {
-            line-height: 1.6;
-            color: #FF1493;
-        }
-
-        p, li, tr {
-            line-height: 1.6;
-            color: #a4acc4;
-        }
-
         section {
             max-width: 1000px;
             margin: 20px auto;
@@ -52,11 +37,21 @@
 
         footer {
             background-color: #1e2229;
+            color: turquoise;
             text-align: center;
             padding: 0em 0;
             position: fixed;
             bottom: 0;
             width: 65%;
+        }
+
+        h2 {
+            color: #61dafb;
+        }
+
+        p {
+            line-height: 1.4;
+            color: #a4acc4;
         }
 
         a {
@@ -67,16 +62,14 @@
         a:hover {
             border-bottom: 2px solid #FF6347;
         }
-
     </style>
 </head>
-
 <body>
     <section>
         <h2 align="center">Quiz page</h2>
         <section>
             {% if not quiz.is_finished() %}
-                <form method="post" action="{{ url_for('quiz') }}">
+                <form method="POST" action="{{ url_for('quiz') }}">
                     <section>
                         <p>{{ quiz.get_current_question().prompt }}</p>
                         {% for i in range(1, quiz.get_current_question().options|length + 1) %}
@@ -87,22 +80,22 @@
                                 <br>
                         {% endfor %}
                         <br>
-                        
-                        <input type="submit" class="btn btn-primary" value="Next">
+                        <input 
+                            type="submit" 
+                            class="btn btn-primary" 
+                            value="Next">
                     </section>
                 </form>
             {% else %}
-                <p>Quiz completed! You scored {{ quiz.score }}/{{ len(quiz.questions) }}.</p>
+                <!--<p>Quiz completed! You scored {{ quiz.score }}/{{ len(quiz.questions) }}.</p>-->
                 <a href="{{ url_for('home') }}">Back to Home</a>
             {% endif %}
         </section>
 
         <footer>
-            <p>&copy;2024 Dev_aladinh production.</p>
+            <p>&copy; 2024 Dev_aladinh production</p>
         </footer>
-
     </section>
 </body>
 </html>
-
 {% endblock %}
