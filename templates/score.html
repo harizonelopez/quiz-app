@@ -26,7 +26,26 @@
             padding: 1em;
         }
 
-        h2, h3 {
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #373c49;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #1e2229;
+            color: turquoise;
+            text-align: center;
+            padding: 0em 0;
+            position: fixed;
+            bottom: 0;
+            width: 65%;
+        }
+
+        h1, h2, h3 {
             color: #61dafb;
         }
 
@@ -45,24 +64,6 @@
             color: #a4acc4;
         }
 
-        section {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #373c49;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-
-        footer {
-            background-color: #1e2229;
-            text-align: center;
-            padding: 0em 0;
-            position: fixed;
-            bottom: 0;
-            width: 65%;
-        }
-
         a {
             color: #00FF00;
             text-decoration: none;
@@ -74,43 +75,41 @@
 
     </style>
 </head>
-
 <body>
     <section>
         <header align="center">
             <p>The Score Page</p>
         </header>
-
         <section>
-            <h1>This is how you have perfomed in your quiz assessment.</h1>
+            <h1 align="center">This is how you have perfomed in your quiz assessment</h1>
             {% if percentage is defined %}
                 {% if percentage == 100 %}
-                <section>
-                    <h2>Score:</h2> 
-                    <h3>{{ percentage }}%.</h3>
-                </section>
-                <section>
-                    <h2>Comment:</h2> 
-                    <h3>{{ comment2 }}</h3>
-                </section>
+                    <section>
+                        <h2>Score:</h2> 
+                        <h3>{{ percentage }}%</h3>
+                    </section>
+                    <section>
+                        <h2>Comment:</h2> 
+                        <h3>{{ comment2 }}</h3>
+                    </section>
                 {% elif percentage >= 50 %}
                     <section>
                         <h2>Score:</h2> 
-                        <h4>{{ percentage }}%.</h4>
+                        <h4>{{ percentage }}%</h4>
                     </section>
                     <section>
                         <h2>Comment:</h2> 
                         <h4>{{ comment2 }}</h4>
                     </section>
                 {% elif percentage < 50 %}
-                <section>
-                    <h2>Score:</h2> 
-                    <h5>{{ percentage }}%.</h5>
-                </section>
-                <section>
-                    <h2>Comment:</h2> 
-                    <h5>{{ comment3 }}</h5>
-                </section>
+                    <section>
+                        <h2>Score:</h2> 
+                        <h5>{{ percentage }}%</h5>
+                    </section>
+                    <section>
+                        <h2>Comment:</h2> 
+                        <h5>{{ comment3 }}</h5>
+                    </section>
                 {% endif %}
             {% else %}
                 <h5>No scores & marks in the database.</h5>
@@ -118,15 +117,14 @@
         </section>
        
         <form method='POST'>
-            <h5 align="center"><button type="submit" class="btn btn-primary">Back to Home page</button></h5>
+            <h5 align="center"><button type="submit" class="btn btn-primary">Home page</button></h5>
         </form>
             
         <footer>
-            <p>&copy;2024 Dev_aladinh production.</p>
+            <p>&copy; 2024 Dev_aladinh production</p>
         </footer>
 
     </section>
 </body>
 </html>
-
 {% endblock %}
