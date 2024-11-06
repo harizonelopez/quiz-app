@@ -130,7 +130,8 @@ def signup():
             existing_user = c.fetchone()
 
             if existing_user:
-                flash('The user details are already taken. Please enter different details.')
+                flash('The user details are already taken. Login instead.')
+                return redirect(url_for('login'))
             else:
                 hashed_password = generate_password_hash(password, method='pbkdf2:sha256')
                 c.execute('INSERT INTO users (username, password) VALUES (?, ?)', (username, hashed_password))
