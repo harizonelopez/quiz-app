@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% block title %} Score page {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #282c35;
+            color: #fff;
+            align-items: center;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        header {
+            background-color: #1e2229;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #373c49;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #1e2229;
+            color: turquoise;
+            text-align: center;
+            padding: 0em 0;
+            position: fixed;
+            bottom: 0;
+            width: 65%;
+        }
+
+        h1, h2, h3 {
+            color: #61dafb;
+        }
+
+        h4 {
+            line-height: 1.6;
+            color: #008000;
+        } 
+        
+        h5 {
+            line-height: 1.6;
+            color: #FF1493;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #a4acc4;
+        }
+
+        a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            border-bottom: 2px solid #FF6347;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header align="center">
+            <p>The Score Page</p>
+        </header>
+        <section>
+            <h1 align="center">This is how you have perfomed in your quiz assessment</h1>
+            {% if percentage is defined %}
+                {% if percentage >= 96 %}
+                    <section>
+                        <h2>Score:</h2> 
+                        <h3>{{ percentage }}%</h3>
+                    </section>
+                    <section>
+                        <h2>Comment:</h2> 
+                        <h3>{{ comment1 }}</h3>
+                    </section>
+                {% elif percentage >= 50 %}
+                    <section>
+                        <h2>Score:</h2> 
+                        <h4>{{ percentage }}%</h4>
+                    </section>
+                    <section>
+                        <h2>Comment:</h2> 
+                        <h4>{{ comment2 }}</h4>
+                    </section>
+                {% elif percentage < 50 %}
+                    <section>
+                        <h2>Score:</h2> 
+                        <h5>{{ percentage }}%</h5>
+                    </section>
+                    <section>
+                        <h2>Comment:</h2> 
+                        <h5>{{ comment3 }}</h5>
+                    </section>
+                {% endif %}
+            {% else %}
+                <h5>No scores & marks in the database.</h5>
+            {% endif %}
+        </section>
+       
+        <form method='POST'>
+            <h5 align="center"><button type="submit" class="btn btn-primary">Home page</button></h5>
+        </form>
+            
+        <footer>
+            <p>&copy; 2024 Dev_aladinh production</p>
+        </footer>
+
+    </section>
+</body>
+</html>
+{% endblock %}

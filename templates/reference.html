@@ -1,0 +1,98 @@
+{% extends "base.html" %} 
+{% block title %} Reference page {% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #282c35;
+            color: #fff;
+            align-items: center;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        header {
+            background-color: #1e2229;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #373c49;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #1e2229;
+            color: turquoise;
+            text-align: center;
+            padding: 0em 0;
+            position: fixed;
+            bottom: 0;
+            width: 65%;
+        }
+
+        h5 {
+            line-height: 1.6;
+            color: #FF1493;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #a4acc4;
+        }
+
+        a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            border-bottom: 2px solid #FF6347;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header align="center">
+            <p>This is the Reference page in which you can get the source codes vis it.</p>
+        </header>
+        <section align="center">
+            <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-arrow" viewBox="0 0 16 16">
+                <path d="M6.707 9h4.364c-.536 1.573 2.028 3.806 4.929-.5-2.9-4.306-5.465-2.073-4.929-.5H6.707L4.854 6.146a.5.5 0 1 0-.708.708L5.293 8h-.586L2.854 6.146a.5.5 0 1 0-.708.708L3.293 8h-.586L.854 6.146a.5.5 0 1 0-.708.708L1.793 8.5.146 10.146a.5.5 0 0 0 .708.708L2.707 9h.586l-1.147 1.146a.5.5 0 0 0 .708.708L4.707 9h.586l-1.147 1.146a.5.5 0 0 0 .708.708z"/>
+              </svg> In case you need to get the source code, you can get them from my github page via the link below.</h5>
+            <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-arrow" viewBox="0 0 16 16">
+                <path d="M6.707 9h4.364c-.536 1.573 2.028 3.806 4.929-.5-2.9-4.306-5.465-2.073-4.929-.5H6.707L4.854 6.146a.5.5 0 1 0-.708.708L5.293 8h-.586L2.854 6.146a.5.5 0 1 0-.708.708L3.293 8h-.586L.854 6.146a.5.5 0 1 0-.708.708L1.793 8.5.146 10.146a.5.5 0 0 0 .708.708L2.707 9h.586l-1.147 1.146a.5.5 0 0 0 .708.708L4.707 9h.586l-1.147 1.146a.5.5 0 0 0 .708.708z"/>
+              </svg> You are free to get the codes and modify them to your need ^LOL^.</h5>
+        </section>
+        <section align="center">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+              </svg><a href="https://github.com/harizonelopez/quiz-app" target="_blank">GitHub</a></p>
+        </section>
+
+        <form method='POST'>
+            <h5 align="center"><button type="submit" class="btn btn-secondary">Home page</button></h5>
+        </form>
+
+        <footer>
+            <p>&copy; 2024 Dev_aladinh production</p>
+        </footer>
+
+    </section>
+</body>
+</html>
+{% endblock %}

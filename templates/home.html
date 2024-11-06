@@ -1,0 +1,116 @@
+{% extends "base.html" %} 
+{% block title %} homepage {% endblock %}
+
+{% block content %}
+<head>
+    <style>
+        body {
+            display: flex;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #282c35;
+            color: #fff;
+            align-items: center;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        header {
+            background-color: #1e2229;
+            text-align: center;
+            padding: 1em;
+        }
+
+        h1, h2 {
+            color: #61dafb;
+        }
+
+        h3, h5 {
+            line-height: 1.6;
+            color: #FF1493;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #a4acc4;
+        }
+
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #373c49;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        footer {
+            background-color: #1e2229;
+            text-align: center;
+            padding: 0em 0;
+            position: fixed;
+            bottom: 0;
+            width: 65%;
+        }
+
+        a {
+            color: #00FF00;
+            text-decoration: none;
+        }
+
+        a:hover {
+            border-bottom: 2px solid #FF6347;
+        }
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <p>The Home Page</p>
+        </header>
+        <section>
+            <h2 align="center">Welcome to the quiz app</h2>
+        </section>
+        {% if 'username' in session %}
+            <h5 align="center">Hello {{ session['username'] }}, Welcome to the quiz app.</h5>
+            <h5 align="center">Proceed to take the quiz.</h5>
+            <section>
+                <h3 align="center"><a href="{{ url_for('quiz') }}">Take Quiz || </a> <a href="{{ url_for('logout') }}">|| Logout</a></h3>
+            </section>
+        {% else %}
+            <section align="center">
+                <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-arrow-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M15.854.146a.5.5 0 0 1 .11.54l-2.8 7a.5.5 0 1 1-.928-.372l1.895-4.738-7.494 7.494 1.376 2.162a.5.5 0 1 1-.844.537l-1.531-2.407L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM5.93 9.363l7.494-7.494L1.591 6.602z"/>
+                    <path fill-rule="evenodd" d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354a.5.5 0 0 0-.722.016l-1.149 1.25a.5.5 0 1 0 .737.676l.28-.305V14a.5.5 0 0 0 1 0v-1.793l.396.397a.5.5 0 0 0 .708-.708z"/>
+                  </svg> You need to signup if you dont have an account or you can just login to your account.</h5>
+            </section>
+            <section>
+                <h1 align="center"><a href="{{ url_for('signup') }}"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-checklist" viewBox="0 0 16 16">
+                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2z"/>
+                    <path d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0M7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0"/>
+                  </svg> Sign Up</a> or <a href="{{ url_for('login') }}"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z"/>
+                    <path fill-rule="evenodd" d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"/>
+                  </svg> Login</a></h1>
+            </section>
+        {% endif %}
+
+        <section align="center">
+            <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.854.146a.5.5 0 0 1 .11.54l-2.8 7a.5.5 0 1 1-.928-.372l1.895-4.738-7.494 7.494 1.376 2.162a.5.5 0 1 1-.844.537l-1.531-2.407L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM5.93 9.363l7.494-7.494L1.591 6.602z"/>
+                <path fill-rule="evenodd" d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354a.5.5 0 0 0-.722.016l-1.149 1.25a.5.5 0 1 0 .737.676l.28-.305V14a.5.5 0 0 0 1 0v-1.793l.396.397a.5.5 0 0 0 .708-.708z"/>
+              </svg> In case you need to reach me for help or any other inquiry, <a href="{{ url_for('contact') }}"> contact me.</a></h5>
+            <h5><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-arrow-up" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M15.854.146a.5.5 0 0 1 .11.54l-2.8 7a.5.5 0 1 1-.928-.372l1.895-4.738-7.494 7.494 1.376 2.162a.5.5 0 1 1-.844.537l-1.531-2.407L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM5.93 9.363l7.494-7.494L1.591 6.602z"/>
+                <path fill-rule="evenodd" d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354a.5.5 0 0 0-.722.016l-1.149 1.25a.5.5 0 1 0 .737.676l.28-.305V14a.5.5 0 0 0 1 0v-1.793l.396.397a.5.5 0 0 0 .708-.708z"/>
+              </svg> In case you need the source code for personal reasons, you can get them from my github page via the link, <a href="{{ url_for('reference') }}"> Reference code.</a></h5>
+        </section>
+
+        <footer>
+            <p>&copy; 2024 Dev_aladinh production</p>
+        </footer>
+    </section>
+</body>
+</html>
+{% endblock %}
