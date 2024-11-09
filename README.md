@@ -34,12 +34,6 @@
   source venv/Scripts/activate   # On Mac, use `venv\bin\activate`
  ```
 
- 3. Install the required packages:
- ```bash
-  pip install -r requirements.txt
- ```
-
-
 ## Run the application:
  ```bash
   python app.py
