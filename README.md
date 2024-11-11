@@ -1,14 +1,13 @@
 # Flask Quiz Application
 
- This is a Flask-based web application providing user authentication and an interactive quiz. Users can sign up, log in, take the quiz, and view their scores.
+ This is a Flask-based web application providing user authentication and an interactive quiz. Users can create their accounts by signing up, loggging in, take the quiz, and view their scores.
 
 
 ## Features
  1. User Registration
- 2. User Login/Logout
- 3. Quiz Functionality
- 4. Score Calculation
- 5. Flash Messages for User Feedback
+ 2. Quiz Functionality
+ 3. Score Calculation
+ 4. Flash Messages for User Feedback
 
 
 ## Installation
