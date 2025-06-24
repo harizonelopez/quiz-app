@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz App - Welcome</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index-style.css') }}">
+</head>
+<body class="d-flex align-items-center justify-content-center vh-100 bg-light fade-in">
+
+    <div class="card p-5 shadow-lg text-center welcome-card scale-up">
+        <h1 class="mb-4 slide-down">Welcome to the Quiz App</h1>
+        <p class="lead mb-4 slide-up">Test your knowledge with a series of fun and challenging questions!</p>
+        <a href="{{ url_for('main.quiz') }}" class="btn btn-primary btn-lg bounce-in">Start Quiz</a>
+    </div>
+
+    <!-- Bootstrap JS (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
