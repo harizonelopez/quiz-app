@@ -14,7 +14,7 @@
 <body class="bg-light d-flex align-items-center justify-content-center vh-100">
 
     <div class="card text-center shadow-lg p-5 result-card">
-        <h1 class="display-5 mb-4 text-success fade-in">🎉 Congratulations!</h1>
+        <h1 class="display-5 mb-4 text-success fade-in">🎉 Congratulations {{ username }}!</h1>  <!-- To be modified according to the scores later -->
         <p class="lead mb-3 slide-up">You scored</p>
         <h2 class="score-text bounce-in">{{ score }} / {{ total }}</h2>
 
@@ -26,7 +26,7 @@
             <p class="text-danger mt-3">Keep practicing! 💪</p>
         {% endif %}
 
-        <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-4">Try Again</a>
+        <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-4">Try Again</a> <!-- To be modified into an if else inconsideration of the scores later -->
     </div>
 
     <!-- Bootstrap JS -->
