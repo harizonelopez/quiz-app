@@ -3,6 +3,7 @@ from .quiz_data import questions
 
 main = Blueprint('main', __name__)
 
+# Home route
 @main.route('/')
 def index():
     session.clear()
