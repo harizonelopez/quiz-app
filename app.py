@@ -82,6 +82,7 @@ class Quiz:
     def is_finished(self):
         return self.current_question_index == len(self.questions)
 
+# Create the database and table if they don't exist
 @app.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if 'username' not in session:
