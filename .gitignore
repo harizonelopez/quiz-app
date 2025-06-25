@@ -28,7 +28,7 @@ dist/
 build/
 
 # Leaderboard data
-leaderboard.json
+leaderboard.json/
 
 # If using dotenv for secrets
 .env

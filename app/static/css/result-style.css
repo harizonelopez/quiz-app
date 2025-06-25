@@ -17,6 +17,12 @@ body {
     animation: bounceIn 1s ease;
 }
 
+canvas {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
 /* Animations */
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.95); }
