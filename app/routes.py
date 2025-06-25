@@ -50,7 +50,8 @@ def quiz():
             session['score'] += 1
             session['feedback'] = 'Correct!'
         else:
-            session['feedback'] = f"Wrong! The correct answer was: {question['answer']}"
+            session['feedback'] = 'Wrong!'
+            # session['feedback'] = f"Wrong! The correct answer was: {question['answer']}"
 
         session['question_index'] += 1
         return redirect(url_for('main.quiz'))
