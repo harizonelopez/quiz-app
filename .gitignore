@@ -1,6 +1,35 @@
-# system logs
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+.env/
+
+# Flask & Python-related
+instance/
+*.db
+*.sqlite3
 *.log
 
-# Python bytecode
-__pycache__/
-*.pyc
+# OS and Editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Python egg and dist files
+*.egg-info/
+dist/
+build/
+
+# Leaderboard data
+leaderboard.json
+
+# If using dotenv for secrets
+.env
+

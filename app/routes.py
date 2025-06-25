@@ -73,7 +73,7 @@ def quiz():
 
         session['question_index'] += 1
         return redirect(url_for('main.quiz'))
-
+    
     return render_template('quiz.html', question=question, index=index + 1,
                            total=len(quiz), stage=question['stage'], feedback=feedback)
 
@@ -90,12 +90,20 @@ def result():
         'score': score,
         'total': total
     }
+    # Calculate percentage
+    percent = int((score / total) * 100) if total > 0 else 0
 
     leaderboard = load_leaderboard()
+
+    # Remove existing entry for this username if it exists
+    leaderboard = [entry for entry in leaderboard if entry['name'] != username]
+    # Add the new one
     leaderboard.append(new_entry)
+    # Sort by score descending
+    leaderboard.sort(key=lambda x: x['score'], reverse=True)
     save_leaderboard(leaderboard)
 
-    return render_template('result.html', score=score, total=total, username=username)
+    return render_template('result.html', score=score, percent=percent, total=total, username=username)
 
 
 # This route displays the leaderboard
