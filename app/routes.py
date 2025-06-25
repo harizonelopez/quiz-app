@@ -111,4 +111,10 @@ def result():
 def show_leaderboard():
     leaderboard = load_leaderboard()
     sorted_board = sorted(leaderboard, key=lambda x: x['score'], reverse=True)
-    return render_template('leaderboard.html', leaderboard=sorted_board)
+
+    # Extract usernames and scores
+    usernames = [entry['name'] for entry in sorted_board]
+    scores = [entry['score'] for entry in sorted_board]
+
+    return render_template('leaderboard.html', leaderboard=sorted_board, usernames=usernames, scores=scores)
+    
