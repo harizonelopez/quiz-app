@@ -1,0 +1,6 @@
+# system logs
+*.log
+
+# Python bytecode
+__pycache__/
+*.pyc

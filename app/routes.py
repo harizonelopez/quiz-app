@@ -1,8 +1,26 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from .quiz_data import questions
 import random
+import os
+import json
 
 main = Blueprint('main', __name__)
+
+# Initialize leaderboard
+LEADERBOARD_FILE = 'leaderboard.json'
+
+# Load the leaderboard
+def load_leaderboard():
+    if os.path.exists(LEADERBOARD_FILE):
+        with open(LEADERBOARD_FILE, 'r') as f:
+            return json.load(f)
+    return []
+
+# Save the data to the leaderboard
+def save_leaderboard(data):
+    with open(LEADERBOARD_FILE, 'w') as f:
+        json.dump(data, f, indent=4)
+
 
 # Home route
 @main.route('/')
@@ -63,5 +81,26 @@ def quiz():
 # This route displays the result after the quiz is completed
 @main.route('/result')
 def result():
+    score = session.get('score', 0)
+    total = len(session.get('quiz', []))
     username = session.get('username', 'Anonymous')
-    return render_template('result.html', username=username, score=session.get('score', 0), total=len(session.get('quiz', [])))
+
+    new_entry = {
+        'name': username,
+        'score': score,
+        'total': total
+    }
+
+    leaderboard = load_leaderboard()
+    leaderboard.append(new_entry)
+    save_leaderboard(leaderboard)
+
+    return render_template('result.html', score=score, total=total, username=username)
+
+
+# This route displays the leaderboard
+@main.route('/leaderboard')
+def show_leaderboard():
+    leaderboard = load_leaderboard()
+    sorted_board = sorted(leaderboard, key=lambda x: x['score'], reverse=True)
+    return render_template('leaderboard.html', leaderboard=sorted_board)
