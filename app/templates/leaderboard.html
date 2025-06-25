@@ -13,7 +13,6 @@
             background: linear-gradient(to right, #f2fcfe, #1c92d2);
             font-family: 'Segoe UI', sans-serif;
         }
-
         .leaderboard-container {
             max-width: 800px;
             margin: 50px auto;
@@ -22,9 +21,16 @@
             border-radius: 1rem;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
         canvas {
             margin-top: 2rem;
+        }
+        @keyframes glow {
+            0% { background-color: #ffeaa7; }
+            50% { background-color: #fff; }
+            100% { background-color: #ffeaa7; }
+        }
+        .highlight-user {
+            animation: glow 1.5s ease-in-out 2;
         }
     </style>
 </head>
@@ -44,12 +50,30 @@
             </thead>
             <tbody>
                 {% for entry in leaderboard %}
-                    <tr>
-                        <td>{{ loop.index }}</td>
+                    <tr class="{% if entry.name == current_user %}table-warning fw-bold{% endif %}">
+                        <td>
+                            {% if loop.index == 1 %}
+                                🥇
+                            {% elif loop.index == 2 %}
+                                🥈
+                            {% elif loop.index == 3 %}
+                                🥉
+                            {% else %}
+                                {{ loop.index }}
+                            {% endif %}
+                        </td>
                         <td>{{ entry.name }}</td>
                         <td>{{ entry.score }}/{{ entry.total }}</td>
                     </tr>
                 {% endfor %}
+
+                {% if show_user_entry %}
+                    <tr class="table-info fw-bold highlight-user">
+                        <td>{{ user_rank }}</td>
+                        <td>{{ user_entry.name }} <small>(You)</small></td>
+                        <td>{{ user_entry.score }}/{{ user_entry.total }}</td>
+                    </tr>
+                {% endif %}
             </tbody>
         </table>
 

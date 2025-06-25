@@ -43,11 +43,16 @@
                     {% endif %}
 
                     <form method="POST" id="quiz-form">
-                        {% for choice in question.choices %}
+                        {% for option in question.choices %}
                             <div class="form-check mb-2">
-                                <input class="form-check-input" type="radio" name="choice" id="choice{{ loop.index }}" value="{{ choice }}" required>
-                                <label class="form-check-label" for="choice{{ loop.index }}">
-                                    {{ choice }}
+                                <input 
+                                    class="form-check-input" 
+                                    type="radio" 
+                                    name="answer" 
+                                    id="option{{ loop.index }}" 
+                                    value="{{ option }}" required>
+                                <label class="form-check-label" for="option{{ loop.index }}">
+                                    {{ option }}
                                 </label>
                             </div>
                         {% endfor %}
@@ -75,6 +80,13 @@
             }
             timeLeft--;
         }, 1000);
+    </script>
+    <!-- Prevent Back Navigation -->
+    <script>
+        history.pushState(null, null, location.href);
+        window.onpopstate = function () {
+            history.go(1);
+        };
     </script>
 </body>
 </html>

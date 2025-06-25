@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-__pycache__/
+app/__pycache__/
 *.py[cod]
 *.pyo
 
@@ -28,7 +28,7 @@ dist/
 build/
 
 # Leaderboard data
-leaderboard.json/
+app/leaderboard.json
 
 # If using dotenv for secrets
 .env

@@ -36,13 +36,25 @@ def start_quiz():
     if not username or len(username) < 3:
         flash('Please enter a valid name.', 'error')
         return redirect(url_for('main.index'))
-    
+
     session['username'] = username
     session['score'] = 0
     session['question_index'] = 0
+    # Shuffle the questions
+    shuffled_questions = random.sample(questions, len(questions))
+    randomized_quiz = []
+    # Randomize the options for each question
+    for q in shuffled_questions:
+        options = q['choices'][:]
+        random.shuffle(options)
+        randomized_quiz.append({
+            'question': q['question'],
+            'answer': q['answer'],
+            'choices': options,
+            'stage': q.get('stage', 1)  # Default stage to 1 if not specified
+        })
 
-    # Shuffle questions for randomness and save for the session
-    session['quiz'] = random.sample(questions, len(questions))
+    session['quiz'] = randomized_quiz
 
     return redirect(url_for('main.quiz'))
 
@@ -50,7 +62,8 @@ def start_quiz():
 # This route handles the quiz logic
 @main.route('/quiz', methods=['GET', 'POST'])
 def quiz():
-    if 'score' not in session or 'quiz' not in session:
+    if 'username' not in session or 'score' not in session or 'quiz' not in session:
+        flash("Please start the quiz first.", "warning")
         return redirect(url_for('main.index'))
 
     index = session['question_index']
@@ -63,19 +76,37 @@ def quiz():
     feedback = session.pop('feedback', None)
 
     if request.method == 'POST':
-        selected = request.form.get('choice')
+        selected = request.form.get('answer')
         if selected == question['answer']:
             session['score'] += 1
             session['feedback'] = 'Correct!'
         else:
             session['feedback'] = 'Wrong!'
-            # session['feedback'] = f"Wrong! The correct answer was: {question['answer']}"
 
         session['question_index'] += 1
         return redirect(url_for('main.quiz'))
     
     return render_template('quiz.html', question=question, index=index + 1,
                            total=len(quiz), stage=question['stage'], feedback=feedback)
+
+
+# This route handles the answer submission to only 'POST' endpoint
+@main.route('/quiz', methods=['POST'])
+def submit_answer():
+    if 'quiz' not in session:
+        return redirect(url_for('main.index'))
+    
+    selected = request.form.get('answer')
+    index = session['question_index']
+    quiz = session['quiz']
+    
+    correct_answer = quiz[index]['correct']
+    if selected == correct_answer:
+        session['score'] += 1
+
+    session['question_index'] += 1
+
+    return redirect(url_for('main.quiz'))
 
 
 # This route displays the result after the quiz is completed
@@ -107,14 +138,35 @@ def result():
 
 
 # This route displays the leaderboard
+from flask import session
+
 @main.route('/leaderboard')
 def show_leaderboard():
     leaderboard = load_leaderboard()
     sorted_board = sorted(leaderboard, key=lambda x: x['score'], reverse=True)
 
-    # Extract usernames and scores
-    usernames = [entry['name'] for entry in sorted_board]
-    scores = [entry['score'] for entry in sorted_board]
+    username = session.get('username')  # from quiz session
+    top_n = 10
+    top_board = sorted_board[:top_n]
 
-    return render_template('leaderboard.html', leaderboard=sorted_board, usernames=usernames, scores=scores)
+    # Find current user's full rank and data
+    user_entry = next((e for e in sorted_board if e['name'] == username), None)
+    user_rank = sorted_board.index(user_entry) + 1 if user_entry else None
+
+    # Show user if not in top 10 already
+    show_user_entry = user_entry and user_entry not in top_board
+
+    usernames = [entry['name'] for entry in top_board]
+    scores = [entry['score'] for entry in top_board]
+
+    return render_template(
+        'leaderboard.html',
+        leaderboard=top_board,
+        usernames=usernames,
+        scores=scores,
+        current_user=username,
+        user_entry=user_entry,
+        user_rank=user_rank,
+        show_user_entry=show_user_entry
+    )
     

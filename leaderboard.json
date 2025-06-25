@@ -1,5 +1,15 @@
 [
     {
+        "name": "Owen",
+        "score": 14,
+        "total": 15
+    },
+    {
+        "name": "Abdi",
+        "score": 10,
+        "total": 15
+    },
+    {
         "name": "Banny",
         "score": 9,
         "total": 15
@@ -10,7 +20,17 @@
         "total": 15
     },
     {
+        "name": "Sally",
+        "score": 9,
+        "total": 15
+    },
+    {
         "name": "ALberto",
+        "score": 7,
+        "total": 15
+    },
+    {
+        "name": "Molly",
         "score": 7,
         "total": 15
     },
@@ -37,6 +57,16 @@
     {
         "name": "Wendy",
         "score": 5,
+        "total": 15
+    },
+    {
+        "name": "Banice",
+        "score": 5,
+        "total": 15
+    },
+    {
+        "name": "Aragon",
+        "score": 1,
         "total": 15
     },
     {
