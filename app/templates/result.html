@@ -43,7 +43,7 @@
         <!-- Action Buttons -->
         <div class="mt-4 d-grid gap-2 d-sm-flex justify-content-sm-center">
             {% if score < total %}
-                <a href="{{ url_for('main.index') }}" class="btn btn-outline-primary px-4">🔁 Retake Quiz</a>
+                <a href="{{ url_for('main.retake_quiz') }}" class="btn btn-outline-primary px-4">🔁 Retake Quiz</a>
             {% else %}
                 <a href="{{ url_for('main.index') }}" class="btn btn-outline-success px-4">🏠 Back to Home</a>
             {% endif %}

@@ -159,3 +159,12 @@ def show_leaderboard():
         show_user_entry=show_user_entry
     )
     
+# This route allows users to retake the quiz
+@main.route('/retake')
+def retake_quiz():
+    if 'username' in session:
+        session['quiz'] = random.sample(questions, len(questions))
+        session['score'] = 0
+        session['question_index'] = 0
+        session.pop('feedback', None)
+    return redirect(url_for('main.quiz'))
