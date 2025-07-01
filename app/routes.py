@@ -21,13 +21,11 @@ def save_leaderboard(data):
     with open(LEADERBOARD_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 
-
 # Home route
 @main.route('/')
 def index():
     session.clear()
     return render_template('index.html')
-
 
 # Start Quiz route
 @main.route('/start-quiz', methods=['POST'])
@@ -57,7 +55,6 @@ def start_quiz():
     session['quiz'] = randomized_quiz
 
     return redirect(url_for('main.quiz'))
-
 
 # This route handles the quiz logic
 @main.route('/quiz', methods=['GET', 'POST'])
@@ -89,7 +86,6 @@ def quiz():
     return render_template('quiz.html', question=question, index=index + 1,
                            total=len(quiz), stage=question['stage'], feedback=feedback)
 
-
 # This route handles the answer submission to only 'POST' endpoint
 @main.route('/quiz', methods=['POST'])
 def submit_answer():
@@ -108,7 +104,6 @@ def submit_answer():
 
     return redirect(url_for('main.quiz'))
 
-
 # This route displays the result after the quiz is completed
 @main.route('/result')
 def result():
@@ -126,20 +121,14 @@ def result():
 
     leaderboard = load_leaderboard()
 
-    # Remove existing entry for this username if it exists
-    leaderboard = [entry for entry in leaderboard if entry['name'] != username]
-    # Add the new one
-    leaderboard.append(new_entry)
-    # Sort by score descending
-    leaderboard.sort(key=lambda x: x['score'], reverse=True)
+    leaderboard = [entry for entry in leaderboard if entry['name'] != username] # Remove the old one
+    leaderboard.append(new_entry) # Add the new one
+    leaderboard.sort(key=lambda x: x['score'], reverse=True) # Sort in descending by scores
     save_leaderboard(leaderboard)
 
     return render_template('result.html', score=score, percent=percent, total=total, username=username)
 
-
 # This route displays the leaderboard
-from flask import session
-
 @main.route('/leaderboard')
 def show_leaderboard():
     leaderboard = load_leaderboard()
