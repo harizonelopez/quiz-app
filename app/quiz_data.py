@@ -88,5 +88,35 @@ questions = [
         "choices": ["China", "India", "UK", "Japan"],
         "answer": "China",
         "stage": 5
+    },
+    {
+        "question": "Who was the first President of the United States?",
+        "choices": ["Abraham Lincoln", "George Washington", "Thomas Jefferson", "John Adams"],
+        "answer": "George Washington",
+        "stage": 5
+    },
+    {
+        "question": "In which year did World War I end?",
+        "choices": ["1945", "1939", "1918", "1950"],
+        "answer": "1918",
+        "stage": 5
+    },
+    {
+        "question": "Which ancient civilization built the pyramids?",
+        "choices": ["Romans", "Egyptians", "Greeks", "Mesopotamians"],
+        "answer": "Egyptians",
+        "stage": 5
+    },
+    {
+        "question": "Who was the leader of the Soviet Union during World War II?",
+        "choices": ["Joseph Stalin", "Vladimir Lenin", "Nikita Khrushchev", "Mikhail Gorbachev"],
+        "answer": "Joseph Stalin",
+        "stage": 5
+    },
+    {
+        "question": "The Great Wall of China was primarily built to protect against invasions from which group?",
+        "choices": ["Mongols", "Romans", "Japanese", "Persians"],
+        "answer": "Mongols",
+        "stage": 5
     }
 ]
