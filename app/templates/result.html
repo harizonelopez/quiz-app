@@ -47,7 +47,7 @@
             {% else %}
                 <a href="{{ url_for('main.index') }}" class="btn btn-outline-success px-4">🏠 Back to Home</a>
             {% endif %}
-            <a href="{{ url_for('main.show_leaderboard') }}" class="btn btn-secondary px-4">🏆 View Leaderboard</a>
+                <a href="{{ url_for('main.show_leaderboard') }}" class="btn btn-secondary px-4">🏆 View Leaderboard</a>
         </div>
     </div>
 
@@ -67,8 +67,8 @@
                     label: 'Quiz Results',
                     data: [{{ score }}, {{ total - score }}],
                     backgroundColor: [
-                        'rgba(40, 167, 69, 0.8)',    // green
-                        'rgba(220, 53, 69, 0.8)'     // red
+                        'rgba(40, 167, 69, 0.8)',    // green color
+                        'rgba(220, 53, 69, 0.8)'     // red color
                     ],
                     borderColor: [
                         'rgba(40, 167, 69, 1)',
