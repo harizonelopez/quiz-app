@@ -27,6 +27,29 @@ def index():
     session.clear()
     return render_template('index.html')
 
+
+# -------------------------------------------------------------- #
+# New route to start the quiz
+# start_quiz route
+@main.route('/start_quiz', methods=['POST'])
+def start_quiz():
+    username = request.form.get('username')
+    if not username:
+        return redirect(url_for('main.index'))
+
+    session['username'] = username
+    session['score'] = 0
+    session['question_index'] = 0
+
+    # Instead of storing full questions, store indexes only
+    quiz_indexes = list(range(len(questions)))
+    random.shuffle(quiz_indexes)
+    session['quiz_indexes'] = quiz_indexes
+
+    return redirect(url_for('main.quiz'))
+# -------------------------------------------------------------- #
+
+
 # Start Quiz route
 @main.route('/start-quiz', methods=['POST'])
 def start_quiz():
@@ -55,6 +78,42 @@ def start_quiz():
     session['quiz'] = randomized_quiz
 
     return redirect(url_for('main.quiz'))
+
+
+# -------------------------------------------------------------- #
+# New route to handle quiz logic
+# quiz route
+@main.route('/quiz', methods=['GET', 'POST'])
+def quiz():
+    if 'username' not in session:
+        return redirect(url_for('main.index'))
+
+    quiz_indexes = session.get('quiz_indexes', [])
+    index = session.get('question_index', 0)
+
+    if request.method == 'POST':
+        selected_choice = request.form.get('choice')
+        q_index = quiz_indexes[index]
+        question = questions[q_index]
+
+        if selected_choice == question['answer']:
+            session['score'] += 1
+
+        session['question_index'] = index + 1
+        return redirect(url_for('main.quiz'))
+
+    if index >= len(quiz_indexes):
+        return redirect(url_for('main.result'))
+
+    q_index = quiz_indexes[index]
+    question = questions[q_index]
+
+    return render_template('quiz.html',
+                           question=question,
+                           question_index=index,
+                           total_questions=len(quiz_indexes))
+# -------------------------------------------------------------- #
+
 
 # This route handles the quiz logic
 @main.route('/quiz', methods=['GET', 'POST'])
