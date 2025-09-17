@@ -121,9 +121,9 @@ def result():
 
     leaderboard = load_leaderboard()
 
-    leaderboard = [entry for entry in leaderboard if entry['name'] != username] # Remove the old one
-    leaderboard.append(new_entry) # Add the new one
-    leaderboard.sort(key=lambda x: x['score'], reverse=True) # Sort in descending by scores
+    leaderboard = [entry for entry in leaderboard if entry['name'] != username] # Remove the old entry from the database
+    leaderboard.append(new_entry) # ---> Add the new one
+    leaderboard.sort(key=lambda x: x['score'], reverse=True) # Sort in descending order using the scores
     save_leaderboard(leaderboard)
 
     return render_template('result.html', score=score, percent=percent, total=total, username=username)
@@ -134,7 +134,7 @@ def show_leaderboard():
     leaderboard = load_leaderboard()
     sorted_board = sorted(leaderboard, key=lambda x: x['score'], reverse=True)
 
-    username = session.get('username')  # from quiz session
+    username = session.get('username')  # From quiz session
     top_n = 10
     top_board = sorted_board[:top_n]
 
