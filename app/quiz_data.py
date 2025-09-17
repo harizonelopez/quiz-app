@@ -18,12 +18,6 @@ questions = [
         "stage": 1
     },
     {
-        "question": "What is 12 x 8?",
-        "choices": ["96", "88", "104", "86"],
-        "answer": "96",
-        "stage": 2
-    },
-    {
         "question": "Which language is primarily used for web styling?",
         "choices": ["HTML", "CSS", "Python", "JavaScript"],
         "answer": "CSS",
@@ -52,12 +46,6 @@ questions = [
         "choices": ["Thermometer", "Barometer", "Speedometer", "Altimeter"],
         "answer": "Thermometer",
         "stage": 3
-    },
-    {
-        "question": "In what year did World War II end?",
-        "choices": ["1945", "1939", "1942", "1950"],
-        "answer": "1945",
-        "stage": 4
     },
     {
         "question": "Which African country is landlocked?",
@@ -118,5 +106,233 @@ questions = [
         "choices": ["Mongols", "Romans", "Japanese", "Persians"],
         "answer": "Mongols",
         "stage": 5
-    }
+    },
+    {
+        "question": "Which planet has the fastest rotation, completing a day in just about 10 hours?",
+        "choices": ["Jupiter", "Saturn", "Neptune", "Uranus"],
+        "answer": "Jupiter",
+        "stage": 5
+    },
+    {
+        "question": "What is the largest moon in the Solar System?",
+        "choices": ["Titan", "Europa", "Ganymede", "Callisto"],
+        "answer": "Ganymede",
+        "stage": 5
+    },
+    {
+        "question": "Which planet has a day that is longer than its year?",
+        "choices": ["Mercury", "Venus", "Mars", "Pluto"],
+        "answer": "Venus",
+        "stage": 5
+    },
+    {
+        "question": "What is the name of the first human-made object to reach interstellar space?",
+        "choices": ["Voyager 1", "Voyager 2", "Pioneer 10", "New Horizons"],
+        "answer": "Voyager 1",
+        "stage": 5
+    },
+    {
+        "question": "Which planet has the most moons in the Solar System as of recent discoveries?",
+        "choices": ["Jupiter", "Saturn", "Uranus", "Neptune"],
+        "answer": "Saturn",
+        "stage": 5
+    },
+    {
+        "question": "Who was the first person to travel into space?",
+        "choices": ["Yuri Gagarin", "Neil Armstrong", "Buzz Aldrin", "Alan Shepard"],
+        "answer": "Yuri Gagarin",
+        "stage": 6
+    },
+    {
+        "question": "In which year did the Berlin Wall fall, marking the symbolic end of the Cold War?",
+        "choices": ["1989", "1991", "1985", "1993"],
+        "answer": "1989",
+        "stage": 6
+    },
+    {
+        "question": "Which Apollo mission was the first to land humans on the Moon?",
+        "choices": ["Apollo 11", "Apollo 12", "Apollo 13", "Apollo 10"],
+        "answer": "Apollo 11",
+        "stage": 6
+    },
+    {
+        "question": "Who was the first woman to win a Nobel Prize?",
+        "choices": ["Marie Curie", "Rosalind Franklin", "Ada Lovelace", "Dorothy Hodgkin"],
+        "answer": "Marie Curie",
+        "stage": 6
+    },
+    {
+        "question": "What is the closest star system to Earth beyond the Sun?",
+        "choices": ["Alpha Centauri", "Barnard's Star", "Sirius", "Proxima Centauri"],
+        "answer": "Alpha Centauri",
+        "stage": 6
+    },
+    {
+        "question": "Who is credited with formulating the laws of motion and universal gravitation?",
+        "choices": ["Isaac Newton", "Albert Einstein", "Galileo Galilei", "Johannes Kepler"],
+        "answer": "Isaac Newton",
+        "stage": 6
+    },
+    {
+        "question": "What was the name of the first programmable general-purpose electronic computer?",
+        "choices": ["ENIAC", "Colossus", "UNIVAC", "Zuse Z3"],
+        "answer": "ENIAC",
+        "stage": 6
+    },
+    {
+        "question": "Which scientist proposed the theory of evolution by natural selection?",
+        "choices": ["Charles Darwin", "Gregor Mendel", "Louis Pasteur", "James Watson"],
+        "answer": "Charles Darwin",
+        "stage": 6
+    },
+    {
+        "question": "What was the first artificial satellite launched into space?",
+        "choices": ["Sputnik 1", "Explorer 1", "Luna 2", "Vostok 1"],
+        "answer": "Sputnik 1",
+        "stage": 6
+    },
+    {
+        "question": "Which physicist developed the theory of special relativity?",
+        "choices": ["Albert Einstein", "Niels Bohr", "Max Planck", "Richard Feynman"],
+        "answer": "Albert Einstein",
+        "stage": 6
+    },
+    {
+        "question": "Who is considered the 'Father of Western Philosophy'?",
+        "choices": ["Socrates", "Plato", "Aristotle", "Pythagoras"],
+        "answer": "Socrates",
+        "stage": 7
+    },
+    {
+        "question": "Which empire was ruled by Mansa Musa, one of the richest men in history?",
+        "choices": ["Mali Empire", "Roman Empire", "Ottoman Empire", "Byzantine Empire"],
+        "answer": "Mali Empire",
+        "stage": 7
+    },
+    {
+        "question": "What is the name of the nearest galaxy to the Milky Way?",
+        "choices": ["Andromeda", "Triangulum", "Sombrero Galaxy", "Whirlpool Galaxy"],
+        "answer": "Andromeda",
+        "stage": 7
+    },
+    {
+        "question": "Who was the British Prime Minister during most of World War II?",
+        "choices": ["Winston Churchill", "Neville Chamberlain", "Clement Attlee", "Harold Macmillan"],
+        "answer": "Winston Churchill",
+        "stage": 7
+    },
+    {
+        "question": "Which philosopher wrote 'The Republic'?",
+        "choices": ["Plato", "Aristotle", "Descartes", "Kant"],
+        "answer": "Plato",
+        "stage": 7
+    },
+    {
+        "question": "What is the largest type of star in the universe?",
+        "choices": ["Red Supergiant", "Neutron Star", "White Dwarf", "Blue Giant"],
+        "answer": "Red Supergiant",
+        "stage": 7
+    },
+    {
+        "question": "Who was the first emperor of a unified China?",
+        "choices": ["Qin Shi Huang", "Han Wudi", "Sun Yat-sen", "Kublai Khan"],
+        "answer": "Qin Shi Huang",
+        "stage": 7
+    },
+    {
+        "question": "Which philosopher declared 'I think, therefore I am'?",
+        "choices": ["René Descartes", "Immanuel Kant", "John Locke", "David Hume"],
+        "answer": "René Descartes",
+        "stage": 7
+    },
+    {
+        "question": "What is the name of the black hole at the center of the Milky Way galaxy?",
+        "choices": ["Sagittarius A*", "Cygnus X-1", "Messier 87*", "Orion Nebula"],
+        "answer": "Sagittarius A*",
+        "stage": 7
+    },
+    {
+        "question": "Who was the first democratically elected president of South Africa?",
+        "choices": ["Nelson Mandela", "Thabo Mbeki", "Jacob Zuma", "Desmond Tutu"],
+        "answer": "Nelson Mandela",
+        "stage": 7
+    },
+    {
+        "question": "Which ancient civilization is credited with creating the first system of writing known as cuneiform?",
+        "choices": ["Sumerians", "Egyptians", "Babylonians", "Phoenicians"],
+        "answer": "Sumerians",
+        "stage": 8
+    },
+    {
+        "question": "What is the name of the physics theory that attempts to unify general relativity and quantum mechanics?",
+        "choices": ["String Theory", "Quantum Field Theory", "Loop Quantum Gravity", "Chaos Theory"],
+        "answer": "String Theory",
+        "stage": 8
+    },
+    {
+        "question": "Which NASA mission was the first to successfully land a rover on Mars?",
+        "choices": ["Sojourner", "Curiosity", "Spirit", "Viking 1"],
+        "answer": "Sojourner",
+        "stage": 8
+    },
+    {
+        "question": "Which ancient wonder of the world was located in the city of Babylon?",
+        "choices": ["Hanging Gardens", "Colossus of Rhodes", "Temple of Artemis", "Lighthouse of Alexandria"],
+        "answer": "Hanging Gardens",
+        "stage": 8
+    },
+    {
+        "question": "What is the hypothetical particle proposed to explain dark matter called?",
+        "choices": ["WIMP", "Graviton", "Axion", "Tachyon"],
+        "answer": "WIMP",
+        "stage": 8
+    },
+    {
+        "question": "Which ancient city is believed to have had the first known library in history?",
+        "choices": ["Nineveh", "Alexandria", "Babylon", "Uruk"],
+        "answer": "Nineveh",
+        "stage": 9
+    },
+    {
+        "question": "What is the name of the paradox that questions why, given the vastness of the universe, we have not yet detected extraterrestrial life?",
+        "choices": ["Fermi Paradox", "Olbers' Paradox", "Twin Paradox", "Bertrand's Paradox"],
+        "answer": "Fermi Paradox",
+        "stage": 9
+    },
+    {
+        "question": "Which scientist is known as the 'father of modern chemistry'?",
+        "choices": ["Antoine Lavoisier", "Robert Boyle", "Dmitri Mendeleev", "Joseph Priestley"],
+        "answer": "Antoine Lavoisier",
+        "stage": 9
+    },
+    {
+        "question": "What is the estimated age of the universe according to current scientific consensus?",
+        "choices": ["13.8 billion years", "10.5 billion years", "15.2 billion years", "20 billion years"],
+        "answer": "13.8 billion years",
+        "stage": 9
+    },
+    {
+        "question": "Which ancient civilization developed the concept of zero as a number?",
+        "choices": ["Maya", "Greek", "Egyptian", "Roman"],
+        "answer": "Maya",
+        "stage": 9
+    },
+    {
+        "question": "What is the name of the theoretical boundary around a black hole beyond which nothing can escape?",
+        "choices": ["Event Horizon", "Singularity", "Schwarzschild Radius", "Photon Sphere"],
+        "answer": "Event Horizon",
+        "stage": 10
+    },
+    {
+        "question": "Which ancient philosopher was the tutor of Alexander the Great?",
+        "choices": ["Aristotle", "Plato", "Socrates", "Heraclitus"],
+        "answer": "Aristotle",
+        "stage": 10
+    },
+    {
+        "question": "Which element was the first to be artificially created in a laboratory?",
+        "choices": ["Technetium", "Plutonium", "Neptunium", "Promethium"],
+        "answer": "Technetium",
+        "stage": 10
+    },
 ]
