@@ -1,5 +1,10 @@
 [
     {
+        "name": "Banny",
+        "score": 16,
+        "total": 20
+    },
+    {
         "name": "Owen",
         "score": 14,
         "total": 15
@@ -17,11 +22,6 @@
     {
         "name": "Abdi",
         "score": 10,
-        "total": 15
-    },
-    {
-        "name": "Banny",
-        "score": 9,
         "total": 15
     },
     {
