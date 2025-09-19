@@ -50,6 +50,7 @@ def start_quiz():
 # -------------------------------------------------------------- #
 
 
+"""
 # Start Quiz route
 @main.route('/start-quiz', methods=['POST'])
 def start_quiz():
@@ -78,6 +79,7 @@ def start_quiz():
     session['quiz'] = randomized_quiz
 
     return redirect(url_for('main.quiz'))
+"""
 
 
 # -------------------------------------------------------------- #
@@ -115,6 +117,7 @@ def quiz():
 # -------------------------------------------------------------- #
 
 
+"""
 # This route handles the quiz logic
 @main.route('/quiz', methods=['GET', 'POST'])
 def quiz():
@@ -144,6 +147,8 @@ def quiz():
     
     return render_template('quiz.html', question=question, index=index + 1,
                            total=len(quiz), stage=question['stage'], feedback=feedback)
+"""
+
 
 # This route handles the answer submission to only 'POST' endpoint
 @main.route('/quiz', methods=['POST'])
