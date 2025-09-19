@@ -27,8 +27,9 @@ Thumbs.db
 dist/
 build/
 
-# Leaderboard data
+# User data
 app/leaderboard.json
+flask_session/
 
 # If using dotenv for secrets
 .env

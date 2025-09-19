@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, session, flash
+from flask import Blueprint, app, render_template, request, redirect, url_for, session, flash
 from .quiz_data import questions
 import random
 import os
@@ -28,9 +28,8 @@ def index():
     return render_template('index.html')
 
 
-# -------------------------------------------------------------- #
 # New route to start the quiz
-# start_quiz route
+"""
 @main.route('/start_quiz', methods=['POST'])
 def start_quiz():
     username = request.form.get('username')
@@ -47,10 +46,9 @@ def start_quiz():
     session['quiz_indexes'] = quiz_indexes
 
     return redirect(url_for('main.quiz'))
-# -------------------------------------------------------------- #
-
-
 """
+
+
 # Start Quiz route
 @main.route('/start-quiz', methods=['POST'])
 def start_quiz():
@@ -79,12 +77,11 @@ def start_quiz():
     session['quiz'] = randomized_quiz
 
     return redirect(url_for('main.quiz'))
-"""
 
 
-# -------------------------------------------------------------- #
+
 # New route to handle quiz logic
-# quiz route
+"""
 @main.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if 'username' not in session:
@@ -114,11 +111,11 @@ def quiz():
                            question=question,
                            question_index=index,
                            total_questions=len(quiz_indexes))
-# -------------------------------------------------------------- #
+# -------------------------------------------------------------- # """
 
 
-"""
 # This route handles the quiz logic
+"""
 @main.route('/quiz', methods=['GET', 'POST'])
 def quiz():
     if 'username' not in session or 'score' not in session or 'quiz' not in session:
@@ -145,9 +142,11 @@ def quiz():
         session['question_index'] += 1
         return redirect(url_for('main.quiz'))
     
-    return render_template('quiz.html', question=question, index=index + 1,
-                           total=len(quiz), stage=question['stage'], feedback=feedback)
-"""
+    return render_template('quiz.html', question=question, 
+                                        index=index + 1,
+                                        total=len(quiz), 
+                                        stage=question['stage'], 
+                                        feedback=feedback)
 
 
 # This route handles the answer submission to only 'POST' endpoint
@@ -166,7 +165,46 @@ def submit_answer():
 
     session['question_index'] += 1
 
-    return redirect(url_for('main.quiz'))
+    return redirect(url_for('main.quiz'))"""
+
+
+#---------------------- This route handles the quiz logic ----------------------#
+@main.route('/quiz', methods=['GET', 'POST'])
+def quiz():
+    if 'username' not in session or 'score' not in session or 'quiz' not in session:
+        flash("Please start the quiz first.", "warning")
+        return redirect(url_for('main.index'))
+
+    index = session['question_index']
+    quiz = session['quiz']
+
+    if index >= len(quiz):
+        return redirect(url_for('main.result'))
+
+    question = quiz[index]
+    feedback = session.pop('feedback', None)
+
+    if request.method == 'POST':
+        selected = request.form.get('answer')
+        if selected == question['answer']:
+            session['score'] += 1
+            session['feedback'] = 'Correct!'
+        else:
+            session['feedback'] = 'Wrong!'
+
+        session['question_index'] += 1
+        return redirect(url_for('main.quiz'))
+
+    return render_template(
+        'quiz.html',
+        question=question,
+        index=index + 1,
+        total=len(quiz),
+        stage=question['stage'],
+        feedback=feedback
+    )
+
+
 
 # This route displays the result after the quiz is completed
 @main.route('/result')
@@ -191,6 +229,7 @@ def result():
     save_leaderboard(leaderboard)
 
     return render_template('result.html', score=score, percent=percent, total=total, username=username)
+
 
 # This route displays the leaderboard
 @main.route('/leaderboard')
