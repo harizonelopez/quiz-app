@@ -335,4 +335,48 @@ questions = [
         "answer": "Technetium",
         "stage": 10
     },
+    {
+        "question": "In quantum mechanics, Heisenberg's Uncertainty Principle states that one cannot simultaneously know with arbitrary precision which pair of properties?",
+        "choices": [
+            "Mass and Energy",
+            "Position and Momentum",
+            "Velocity and Acceleration",
+            "Charge and Spin"
+        ],
+        "answer": "Position and Momentum",
+        "stage": 11
+    },
+    {
+        "question": "Which ancient library, destroyed around the 3rd century BCE, is considered one of the greatest losses of classical knowledge?",
+        "choices": [
+            "Library of Pergamum",
+            "Library of Alexandria",
+            "Nalanda Library",
+            "Celsus Library"
+        ],
+        "answer": "Library of Alexandria",
+        "stage": 11
+    },
+    {
+        "question": "In computer science, what problem does the 'Halting Problem' prove to be fundamentally undecidable?",
+        "choices": [
+            "Whether a program will run faster than O(n)",
+            "Whether a program will eventually stop running",
+            "Whether two algorithms are functionally identical",
+            "Whether a system is NP-complete"
+        ],
+        "answer": "Whether a program will eventually stop running",
+        "stage": 11
+    },
+    {
+        "question": "What is the paradox called where a particle seems to borrow energy and exist briefly in violation of conservation laws?",
+        "choices": [
+            "Schrödinger’s Paradox",
+            "Quantum Tunneling",
+            "Virtual Particle Paradox",
+            "Casimir Effect"
+        ],
+        "answer": "Virtual Particle Paradox",
+        "stage": 11
+    },
 ]

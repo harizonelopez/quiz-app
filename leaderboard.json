@@ -1,5 +1,10 @@
 [
     {
+        "name": "Jarvis",
+        "score": 45,
+        "total": 60
+    },
+    {
         "name": "Wayne",
         "score": 41,
         "total": 56
