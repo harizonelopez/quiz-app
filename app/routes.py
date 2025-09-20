@@ -28,27 +28,6 @@ def index():
     return render_template('index.html')
 
 
-# New route to start the quiz
-"""
-@main.route('/start_quiz', methods=['POST'])
-def start_quiz():
-    username = request.form.get('username')
-    if not username:
-        return redirect(url_for('main.index'))
-
-    session['username'] = username
-    session['score'] = 0
-    session['question_index'] = 0
-
-    # Instead of storing full questions, store indexes only
-    quiz_indexes = list(range(len(questions)))
-    random.shuffle(quiz_indexes)
-    session['quiz_indexes'] = quiz_indexes
-
-    return redirect(url_for('main.quiz'))
-"""
-
-
 # Start Quiz route
 @main.route('/start-quiz', methods=['POST'])
 def start_quiz():
