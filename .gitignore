@@ -30,6 +30,7 @@ build/
 # User data
 app/leaderboard.json
 flask_session/
+docs/
 
 # If using dotenv for secrets
 .env
