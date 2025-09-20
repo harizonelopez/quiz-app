@@ -79,7 +79,6 @@ def start_quiz():
     return redirect(url_for('main.quiz'))
 
 
-
 # New route to handle quiz logic
 """
 @main.route('/quiz', methods=['GET', 'POST'])
