@@ -79,94 +79,6 @@ def start_quiz():
     return redirect(url_for('main.quiz'))
 
 
-# New route to handle quiz logic
-"""
-@main.route('/quiz', methods=['GET', 'POST'])
-def quiz():
-    if 'username' not in session:
-        return redirect(url_for('main.index'))
-
-    quiz_indexes = session.get('quiz_indexes', [])
-    index = session.get('question_index', 0)
-
-    if request.method == 'POST':
-        selected_choice = request.form.get('choice')
-        q_index = quiz_indexes[index]
-        question = questions[q_index]
-
-        if selected_choice == question['answer']:
-            session['score'] += 1
-
-        session['question_index'] = index + 1
-        return redirect(url_for('main.quiz'))
-
-    if index >= len(quiz_indexes):
-        return redirect(url_for('main.result'))
-
-    q_index = quiz_indexes[index]
-    question = questions[q_index]
-
-    return render_template('quiz.html',
-                           question=question,
-                           question_index=index,
-                           total_questions=len(quiz_indexes))
-# -------------------------------------------------------------- # """
-
-
-# This route handles the quiz logic
-"""
-@main.route('/quiz', methods=['GET', 'POST'])
-def quiz():
-    if 'username' not in session or 'score' not in session or 'quiz' not in session:
-        flash("Please start the quiz first.", "warning")
-        return redirect(url_for('main.index'))
-
-    index = session['question_index']
-    quiz = session['quiz']
-
-    if index >= len(quiz):
-        return redirect(url_for('main.result'))
-
-    question = quiz[index]
-    feedback = session.pop('feedback', None)
-
-    if request.method == 'POST':
-        selected = request.form.get('answer')
-        if selected == question['answer']:
-            session['score'] += 1
-            session['feedback'] = 'Correct!'
-        else:
-            session['feedback'] = 'Wrong!'
-
-        session['question_index'] += 1
-        return redirect(url_for('main.quiz'))
-    
-    return render_template('quiz.html', question=question, 
-                                        index=index + 1,
-                                        total=len(quiz), 
-                                        stage=question['stage'], 
-                                        feedback=feedback)
-
-
-# This route handles the answer submission to only 'POST' endpoint
-@main.route('/quiz', methods=['POST'])
-def submit_answer():
-    if 'quiz' not in session:
-        return redirect(url_for('main.index'))
-    
-    selected = request.form.get('answer')
-    index = session['question_index']
-    quiz = session['quiz']
-    
-    correct_answer = quiz[index]['correct']
-    if selected == correct_answer:
-        session['score'] += 1
-
-    session['question_index'] += 1
-
-    return redirect(url_for('main.quiz'))"""
-
-
 #---------------------- This route handles the quiz logic ----------------------#
 @main.route('/quiz', methods=['GET', 'POST'])
 def quiz():
@@ -202,8 +114,6 @@ def quiz():
         stage=question['stage'],
         feedback=feedback
     )
-
-
 
 # This route displays the result after the quiz is completed
 @main.route('/result')

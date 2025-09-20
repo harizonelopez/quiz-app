@@ -10,6 +10,11 @@
         "total": 56
     },
     {
+        "name": "Quan",
+        "score": 38,
+        "total": 60
+    },
+    {
         "name": "Waldo",
         "score": 33,
         "total": 60
@@ -42,11 +47,6 @@
     {
         "name": "Abdi",
         "score": 10,
-        "total": 15
-    },
-    {
-        "name": "Quan",
-        "score": 9,
         "total": 15
     },
     {
