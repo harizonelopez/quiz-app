@@ -9,26 +9,25 @@ main = Blueprint('main', __name__)
 # Initialize leaderboard
 LEADERBOARD_FILE = 'leaderboard.json'
 
-# Load the leaderboard
+#---------------- Load the leaderboard ------------------#
 def load_leaderboard():
     if os.path.exists(LEADERBOARD_FILE):
         with open(LEADERBOARD_FILE, 'r') as f:
             return json.load(f)
     return []
 
-# Save the data to the leaderboard
+#--------------- Save the data to the leaderboard ---------------#
 def save_leaderboard(data):
     with open(LEADERBOARD_FILE, 'w') as f:
         json.dump(data, f, indent=4)
 
-# Home route
+#--------------- Home route ----------------#
 @main.route('/')
 def index():
     session.clear()
     return render_template('index.html')
 
-
-# Start Quiz route
+#----------------- Start Quiz route ------------------#
 @main.route('/start-quiz', methods=['POST'])
 def start_quiz():
     username = request.form.get('username').strip()
@@ -94,7 +93,7 @@ def quiz():
         feedback=feedback
     )
 
-# This route displays the result after the quiz is completed
+#---------------- This route displays the result after the quiz is completed ------------------#
 @main.route('/result')
 def result():
     score = session.get('score', 0)
@@ -118,8 +117,7 @@ def result():
 
     return render_template('result.html', score=score, percent=percent, total=total, username=username)
 
-
-# This route displays the leaderboard
+#-------------- This route displays the leaderboard -----------------#
 @main.route('/leaderboard')
 def show_leaderboard():
     leaderboard = load_leaderboard()
@@ -150,7 +148,7 @@ def show_leaderboard():
         show_user_entry=show_user_entry
     )
     
-# This route allows users to retake the quiz
+#---------------- This route allows users to retake the quiz -------------------#
 @main.route('/retake')
 def retake_quiz():
     if 'username' in session:
