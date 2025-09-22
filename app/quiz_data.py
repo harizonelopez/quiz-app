@@ -378,5 +378,5 @@ questions = [
         ],
         "answer": "Virtual Particle Paradox",
         "stage": 11
-    },
+    }
 ]
