@@ -6,7 +6,7 @@ import json
 
 main = Blueprint('main', __name__)
 
-# Initialize leaderboard
+#---------------- Initialize leaderboard ---------------#
 LEADERBOARD_FILE = 'leaderboard.json'
 
 #---------------- Load the leaderboard ------------------#
@@ -49,7 +49,7 @@ def start_quiz():
             'question': q['question'],
             'answer': q['answer'],
             'choices': options,
-            'stage': q.get('stage', 1)  # Default stage to 1 if not specified
+            'stage': q.get('stage', 1)  # -----> Default stage to 1 if not specified
         })
 
     session['quiz'] = randomized_quiz
@@ -110,9 +110,9 @@ def result():
 
     leaderboard = load_leaderboard()
 
-    leaderboard = [entry for entry in leaderboard if entry['name'] != username] # Remove the old entry from the database
+    leaderboard = [entry for entry in leaderboard if entry['name'] != username] # ----> Remove the old entry from the database
     leaderboard.append(new_entry) # ---> Add the new one
-    leaderboard.sort(key=lambda x: x['score'], reverse=True) # Sort in descending order using the scores
+    leaderboard.sort(key=lambda x: x['score'], reverse=True) # ---> Sort in descending order using the scores
     save_leaderboard(leaderboard)
 
     return render_template('result.html', score=score, percent=percent, total=total, username=username)
@@ -123,7 +123,7 @@ def show_leaderboard():
     leaderboard = load_leaderboard()
     sorted_board = sorted(leaderboard, key=lambda x: x['score'], reverse=True)
 
-    username = session.get('username')  # From quiz session
+    username = session.get('username')  # ----> From quiz session
     top_n = 10
     top_board = sorted_board[:top_n]
 
