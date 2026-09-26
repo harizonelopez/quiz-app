@@ -89,10 +89,10 @@
         const scoreChart = new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: {{ usernames|tojson }},
+                labels: {{ usernames|default([])|tojson }},
                 datasets: [{
                     label: 'Scores',
-                    data: {{ scores|tojson }},
+                    data: {{ scores|default([])|tojson }},
                     backgroundColor: 'rgba(54, 162, 235, 0.8)',
                     borderColor: 'rgba(54, 162, 235, 1)',
                     borderWidth: 1
